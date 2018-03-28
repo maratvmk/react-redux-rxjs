@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { Router, Route, browserHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
 
 import App from './components/App';
 import Foo from './components/Foo';
@@ -26,7 +26,8 @@ const rootReducer = combineReducers({
 const store = createStore(
     rootReducer,
     applyMiddleware(
-        createEpicMiddleware(rootEpic)
+        routerMiddleware(browserHistory),
+        createEpicMiddleware(rootEpic),
     )
 );
 

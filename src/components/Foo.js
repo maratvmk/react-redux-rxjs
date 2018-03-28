@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { push } from "react-router-redux";
 
 class Foo extends Component {
-    componentWillUnmount() {
-        this.props.dispatch({type: "FETCH_USER", payload: 'mara'})
-    }
     
     componentDidMount() {
+        // this.props.dispatch(push('/bar'))
         this.props.dispatch({type: "FETCH_USER", payload: 'maratvmk'})
+    }
+
+    componentWillUnmount() {
+        this.props.dispatch({type: "FETCH_USER_CANCELLED"})
     }
 
     render() {
