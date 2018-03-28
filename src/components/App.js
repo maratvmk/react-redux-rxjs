@@ -5,11 +5,6 @@ import './App.css';
 import { Link } from 'react-router'
 
 class App extends Component {
-
-    constructor({children}) {
-        super({children})
-    }
-
     getUser = (username) => {
         this.props.dispatch({ type: 'FETCH_USER', payload: username });
     }
